@@ -1,2 +1,1 @@
-# hookes-law
-Created with CodeSandbox
+# Hooke's law
