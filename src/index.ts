@@ -35,12 +35,10 @@ function draw() {
   line.x = mousePos.x;
   line.y = mousePos.y;
 
-  const dx = ball.x - line.x;
-  const dy = ball.y - line.y;
-  // console.log(dy, dx)
-  const currentLength = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-  const angle = Math.atan2(dy, dx);
-  line.angle = angle;
+  let dx = ball.x - line.x;
+  let dy = ball.y - line.y;
+  let currentLength = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+  let angle = Math.atan2(dy, dx);
 
   let deltaX = currentLength - initLength;
 
@@ -48,22 +46,21 @@ function draw() {
   const fx = Math.cos(angle) * f;
   const fy = Math.sin(angle) * f;
 
-  // console.log(ballPos.x)
   speed.x += fx;
   speed.y += fy;
   speed.y += gravity;
   speed.y *= friction;
   speed.x *= friction;
-  // console.log(speed)
   ball.x += speed.x;
   ball.y += speed.y;
 
+  dx = ball.x - line.x;
+  dy = ball.y - line.y;
+  currentLength = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+  angle = Math.atan2(dy, dx);
+
   line.initLength = currentLength;
-
-  // line.endX = ball.x;
-  // line.endY = ball.y;
-
-  // console.log(line)
+  line.angle = angle;
 
   line.render(ctx);
 
@@ -77,7 +74,7 @@ window.addEventListener("mousemove", event => {
     x: event.pageX - canvas.offsetLeft,
     y: event.pageY - canvas.offsetTop
   };
-  draw();
+  // draw();
 });
 
 draw();

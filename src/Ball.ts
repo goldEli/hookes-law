@@ -7,9 +7,7 @@ class Ball {
   radius: number = 12;
   x: number = 0;
   y: number = 0;
-  // constructor() {
-  //   this.radius = 12;
-  // }
+
   render(ctx: CanvasRenderingContext2D) {
     ctx.save();
     ctx.translate(this.x, this.y);
